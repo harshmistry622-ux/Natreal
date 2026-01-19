@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natreal - Purely Natural & Truly Real</title>
+    <meta name="description" content="Natreal creates handmade natural cosmetics, soaps, lip balms, body lotions, and fragrance candles using honest ingredients. Purely Natural. Truly Real.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f4f7f4',
+                            100: '#e3ebe3',
+                            200: '#c5d6c5',
+                            500: '#7a9e7e', /* Sage Green */
+                            600: '#5c7c56',
+                            700: '#4a6346',
+                            800: '#3a4e37',
+                            900: '#2d3d2a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles for things Tailwind doesn't cover easily */
+        .hero-pattern {
+            background-color: #ffffff;
+            background-image: radial-gradient(#7a9e7e 0.5px, #ffffff 0.5px);
+            background-size: 10px 10px;
+        }
+        
+        /* Mobile menu transition */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-600 antialiased bg-brand-50">
+
+    <!-- Notification Toast (Hidden by default) -->
+    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-x-full transition-transform duration-300 ease-out">
+        <div class="bg-brand-700 text-white px-6 py-4 rounded shadow-lg flex items-center gap-3">
+            <i class="fas fa-check-circle text-xl"></i>
+            <div>
+                <h4 class="font-bold">Success!</h4>
+                <p class="text-sm">Message sent successfully.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-white/90 backdrop-blur-md border-b border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brand-600 rounded-full flex items-center justify-center text-white text-xl font-bold mr-2">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <span class="font-serif font-bold text-2xl text-brand-900 tracking-tight">Natreal</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#products" class="text-gray-600 hover:text-brand-600 font-medium transition">Products</a>
+                    <a href="#about" class="text-gray-600 hover:text-brand-600 font-medium transition">About</a>
+                    <a href="#contact" class="bg-brand-600 text-white px-5 py-2.5 rounded-full font-medium hover:bg-brand-700 transition shadow-lg shadow-brand-500/30">
+                        Shop Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-600 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden bg-white border-b border-brand-100">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#products" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50" onclick="toggleMenu()">Products</a>
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50" onclick="toggleMenu()">About</a>
+                <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-brand-600 bg-brand-50 hover:bg-brand-100" onclick="toggleMenu()">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="absolute inset-0 -z-10 h-full w-full bg-white hero-pattern [mask-image:radial-gradient(100%_50%_at_top_center,white,transparent)]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 text-brand-800 text-sm font-semibold mb-6 border border-brand-200">
+                <span class="w-2 h-2 rounded-full bg-brand-600 animate-pulse"></span>
+                Small Batch & Handcrafted
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-serif font-bold tracking-tight text-brand-900 mb-6">
+                Purely Natural & <br>
+                <span class="text-brand-600 italic">Truly Real</span>
+            </h1>
+            
+            <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto mb-10 font-light">
+                Gentle, nature-inspired care for your body and home. Honest ingredients, handmade with love to bring tranquility to your everyday routine.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 bg-brand-600 text-white rounded-full font-semibold text-lg hover:bg-brand-700 transition shadow-xl shadow-brand-500/20 flex items-center justify-center gap-2">
+                    Explore Collection
+                    <i class="fas fa-leaf"></i>
+                </a>
+                <a href="#about" class="px-8 py-4 bg-white text-brand-800 border border-brand-200 rounded-full font-semibold text-lg hover:bg-brand-50 transition flex items-center justify-center">
+                    Our Story
+                </a>
+            </div>
+            
+            <!-- Ingredient Highlights -->
+            <div class="mt-16 pt-8 border-t border-brand-100">
+                <p class="text-sm text-brand-400 font-medium mb-6 uppercase tracking-wider">Crafted with Real Ingredients</p>
+                <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70">
+                    <div class="flex flex-col items-center gap-2 text-sm font-bold text-gray-600">
+                        <i class="fas fa-spa text-2xl text-brand-500"></i>
+                        <span>Essential Oils</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 text-sm font-bold text-gray-600">
+                        <i class="fas fa-seedling text-2xl text-brand-500"></i>
+                        <span>Plant Extracts</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 text-sm font-bold text-gray-600">
+                        <i class="fas fa-tint text-2xl text-brand-500"></i>
+                        <span>Natural Butters</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 text-sm font-bold text-gray-600">
+                        <i class="fas fa-mortar-pestle text-2xl text-brand-500"></i>
+                        <span>Hand-Blended</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products/Services Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">Our Offerings</h2>
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-brand-900 mb-4">Nature's Best, Bottled for You</h3>
+                <p class="text-lg text-gray-500">From skin-loving cosmetics to soothing home fragrances, everything we make is designed to be gentle and honest.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-brand-50 p-8 rounded-2xl hover:shadow-lg transition duration-300 group border border-brand-100">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-600 text-2xl mb-6 shadow-sm">
+                        <i class="fas fa-pump-soap"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-brand-900 mb-3">Natural Skincare</h4>
+                    <p class="text-gray-600 leading-relaxed">Lotions, balms, and oils formulated with nourishing botanicals to hydrate and protect your skin without harsh chemicals.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-brand-50 p-8 rounded-2xl hover:shadow-lg transition duration-300 group border border-brand-100">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-600 text-2xl mb-6 shadow-sm">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-brand-900 mb-3">Home Fragrances</h4>
+                    <p class="text-gray-600 leading-relaxed">Fill your home with the scent of nature. Our reed diffusers and room sprays use pure essential oil blends.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-brand-50 p-8 rounded-2xl hover:shadow-lg transition duration-300 group border border-brand-100">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-600 text-2xl mb-6 shadow-sm">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-brand-900 mb-3">Soy Candles</h4>
+                    <p class="text-gray-600 leading-relaxed">Clean-burning soy wax candles hand-poured in small batches to create a cozy, toxin-free atmosphere.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-brand-50 p-8 rounded-2xl hover:shadow-lg transition duration-300 group border border-brand-100">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-600 text-2xl mb-6 shadow-sm">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-brand-900 mb-3">Handmade with Care</h4>
+                    <p class="text-gray-600 leading-relaxed">Every jar and bottle is filled by hand in our home studio, ensuring personal attention to quality and detail.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-brand-50 p-8 rounded-2xl hover:shadow-lg transition duration-300 group border border-brand-100">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-600 text-2xl mb-6 shadow-sm">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-brand-900 mb-3">Cruelty-Free</h4>
+                    <p class="text-gray-600 leading-relaxed">We love animals as much as we love nature. None of our products or ingredients are ever tested on animals.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-brand-50 p-8 rounded-2xl hover:shadow-lg transition duration-300 group border border-brand-100">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-600 text-2xl mb-6 shadow-sm">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-brand-900 mb-3">Custom Gift Sets</h4>
+                    <p class="text-gray-600 leading-relaxed">Beautifully packaged sets perfect for birthdays, holidays, or just showing someone you care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-brand-100/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="relative order-2 lg:order-1">
+                    <div class="absolute -top-4 -left-4 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-xl opacity-70 animate-blob"></div>
+                    <div class="absolute -bottom-8 -right-4 w-72 h-72 bg-brand-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                    
+                    <!-- Abstract representation of natural products -->
+                    <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Handmade soap and ingredients" class="relative rounded-2xl shadow-xl z-10 w-full object-cover h-[500px]">
+                </div>
+                
+                <div class="mt-12 lg:mt-0 order-1 lg:order-2">
+                    <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">Our Story</h2>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-brand-900 mb-6">Made with care, honesty, and real ingredients.</h3>
+                    
+                    <div class="space-y-6 text-lg text-gray-600">
+                        <p>
+                            Natreal is a home-grown brand dedicated to creating natural, honest, and handcrafted self-care products.
+                        </p>
+                        <p>
+                             From nourishing soaps and lip balms to gentle body lotions and soothing fragrance candles, and more every Natreal product is made by hand in small batches using thoughtfully chosen natural ingredients.
+                        </p>
+                        <p>
+                            We believe in slow, mindful creation offering care that feels real, simple, and rooted in nature.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 flex gap-4">
+                        <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm text-sm font-medium text-brand-800">
+                            <i class="fas fa-check text-brand-500"></i> Small Batch
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm text-sm font-medium text-brand-800">
+                            <i class="fas fa-check text-brand-500"></i> Eco-Friendly
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-50 rounded-3xl shadow-xl overflow-hidden border border-brand-100">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-10 bg-brand-600 text-white flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-3xl font-serif font-bold mb-4">Get in Touch</h3>
+                            <p class="text-brand-100 mb-8">Have a question about ingredients or want to place a custom order? We'd love to hear from you.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <span>Natreal.NR@gmail.com</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-brand-500 rounded-full flex items-center justify
